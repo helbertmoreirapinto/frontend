@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <img src="@/assets/logo.png" alt="Exame" class="image">
+        <img :src="`data:image/jpeg;charset=utf-8;base64,${src}`" alt="Exame" class="image">
     </div>
 </template>
 
@@ -9,7 +9,7 @@
         props: {
             src: {
                 type: String,
-                default: '',
+                required: true,
             },
         },
     }

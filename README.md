@@ -1,5 +1,3 @@
-# helbert
-
 ## Project setup
 ```
 npm install

@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import { createProvider } from './vue-apollo'
 
 Vue.use(ElementUI);
 
@@ -10,5 +11,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  apolloProvider: createProvider(),
   render: h => h(App)
 }).$mount('#app')
