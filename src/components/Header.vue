@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <span class="title">Projeto Ceratocone</span>
+        <span class="title">KCLabel</span>
     </div>
 </template>
 

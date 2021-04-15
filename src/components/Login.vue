@@ -3,7 +3,7 @@
     <span class="title">Login</span>
     <el-input placeholder="Digite o nome de usuario" v-model="username" class="input_login"></el-input>
     <el-input placeholder="Digite a senha" v-model="password" class="input_login" type="password"></el-input>
-    <el-button type="primary" style="width:100px" >
+    <el-button type="primary" style="width:100px"  @click="$emit('login', {username, password})">
       Login
     </el-button>
   </div>
