@@ -14,6 +14,7 @@
         <el-radio v-model="radio" label="3">Pós operatório: Transp Córnea</el-radio>
         <el-radio v-model="radio" label="6">Ceratocone 3</el-radio>
         <el-radio v-model="radio" label="9">Outros</el-radio>
+        <el-radio v-model="radio" label="10">Deformação corneana por lente de contato</el-radio>
         <div></div>
     </div>
     <div class="submit">
