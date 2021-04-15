@@ -26,8 +26,10 @@ export default {
           password: user.password
         },
       })
-      window.localStorage.setItem('userId',response.data.login)
-      this.$router.push({name: 'Exam'})
+      if(response.data.login){
+        window.localStorage.setItem('userId',response.data.login)
+        this.$router.push({name: 'Exam'})
+      }
     }
   },
 }
