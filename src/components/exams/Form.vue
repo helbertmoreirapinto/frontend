@@ -33,7 +33,7 @@
         },
         data() {
             return {
-                radio: '1'
+                radio: '7'
             }
         },
         computed: {

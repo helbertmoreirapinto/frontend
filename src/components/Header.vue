@@ -14,7 +14,7 @@
 .header{
     height: 40px;
     width: 100%;
-    background-color: lightblue;
+    background-color: rgb(173, 230, 178);
     display: flex;
     flex-direction: column;
     justify-content: center;
