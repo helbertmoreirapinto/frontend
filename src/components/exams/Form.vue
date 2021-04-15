@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="submit">
-        <el-button type="primary" @click="$emit('nextExam',radio)">Próximo</el-button>
+        <el-button type="primary" :disabled="Object.keys(data).length === 0" @click="$emit('nextExam',radio)">Próximo</el-button>
     </div>
 </div>
 
@@ -34,7 +34,7 @@
         props: {
             data: {
                 type: Object,
-                default: () => {return {patientAge: 'Carregando', examDate: '01-01-2020'}}
+                default:null
             },
         },
         data() {

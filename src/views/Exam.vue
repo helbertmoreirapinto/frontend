@@ -39,7 +39,7 @@ import Form from "@/components/exams/Form";
         },
         apollo:{
             nextExam: {
-                query: gql`query Test($id: ID!){
+                query: gql`query Test($id: String!){
                   nextExam(userId: $id){
                     file,
                     examDate
@@ -48,21 +48,24 @@ import Form from "@/components/exams/Form";
                   }
                 }` ,
                 variables:{
-                  id: 1
+                  id: window.localStorage.getItem('userId')
                 }
             },
+        },
+        created(){
+            /* this.$apollo.queries.nextExam.refetch() */
         },
         methods:{
             async nextExamMethod(event) {
                 // Call to the graphql mutation
                 await this.$apollo.mutate({
                   // Query
-                  mutation: gql`mutation ExamAns ($userId: ID!,$examId: ID!,$answer: Int!) {
+                  mutation: gql`mutation ExamAns ($userId: String!,$examId: ID!,$answer: Int!) {
                     examAns(userId: $userId,examId: $examId, answer: $answer)
                   }`,
                   // Parameters
                   variables: {
-                    userId: 1,
+                    userId: window.localStorage.getItem('userId'),
                     examId: this.nextExam.examId,
                     answer: +event,
                   },
