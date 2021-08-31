@@ -69,9 +69,16 @@ export default {
     },
   },
   created() {
+    window.addEventListener('keydown', this.keyevent)
     /* this.$apollo.queries.nextExam.refetch() */
   },
+  beforeDestroy(){
+    window.removeEventListener('keydown',this.keyevent)
+  },
   methods: {
+    keyevent(e){
+      console.log(e.key)//e.key é a tecla digitada, aqui vc faz oq vc quiser com as teclas q vc quiser
+    },
     async nextExamMethod(event) {
       // Call to the graphql mutation
       await this.$apollo.mutate({
@@ -98,7 +105,7 @@ export default {
 .container {
   height: calc(100vh - 5px);
   display: grid;
-  grid-template-rows: 80% 20%;
+  grid-template-columns: 80% 20%;
 }
 .top {
   display: flex;
