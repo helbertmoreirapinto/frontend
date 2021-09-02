@@ -8,11 +8,10 @@
         :data="
           this.nextExam
             ? {
-                patientAge: nextExam.patientAge,
-                info01: nextExam.info01,
-                info02: nextExam.info02,
-                info03: nextExam.info03,
-                info04: nextExam.info04
+                age: nextExam.age,
+                tkc: nextExam.tkc,
+                badd: nextExam.badd,
+                isv: nextExam.isv, 
               }
             : {}
         "
@@ -55,11 +54,11 @@ export default {
         query Test($id: String!) {
           nextExam(userId: $id) {
             file
-            patientAge
-            info01
-            info02
-            info03
-            info04
+            age,
+            examId
+            tkc
+            badd
+            isv
           }
         }
       `,
@@ -69,25 +68,31 @@ export default {
     },
   },
   created() {
-    window.addEventListener('keydown', this.keyevent)
-    /* this.$apollo.queries.nextExam.refetch() */
+    window.addEventListener("keydown", this.keyevent);
   },
-  beforeDestroy(){
-    window.removeEventListener('keydown',this.keyevent)
+  beforeDestroy() {
+    window.removeEventListener("keydown", this.keyevent);
   },
   methods: {
-    keyevent(e){
-      console.log(e.key)//e.key é a tecla digitada, aqui vc faz oq vc quiser com as teclas q vc quiser
+    keyevent(e) {
+      if (e.key === "Enter") {
+        console.log(this.data)
+        this.nextExamMethod(this.data);
+      }
     },
     async nextExamMethod(event) {
       // Call to the graphql mutation
+      console.log("---");
+      console.log(event);
+      console.log("---");
       await this.$apollo.mutate({
         // Query
         mutation: gql`
-          mutation ExamAns($userId: String!, $examId: ID!, $answer: Int!) {
+          mutation ExamAns($userId: String!, $examId: String!, $answer: Int!) {
             examAns(userId: $userId, examId: $examId, answer: $answer)
           }
         `,
+
         // Parameters
         variables: {
           userId: window.localStorage.getItem("userId"),
@@ -103,12 +108,14 @@ export default {
 
 <style scoped>
 .container {
-  height: calc(100vh - 5px);
+  height: calc(100vh - 30px);
   display: grid;
   grid-template-columns: 80% 20%;
+  width: 80%;
 }
 .top {
   display: flex;
   flex-direction: column;
+  width: 150%;
 }
 </style>
