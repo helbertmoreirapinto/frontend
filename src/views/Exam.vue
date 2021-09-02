@@ -38,7 +38,7 @@ import Form from "@/components/exams/Form";
 export default {
   components: {
     Img,
-    Form,
+    Form
   },
   computed: {
     nextExamComputed() {

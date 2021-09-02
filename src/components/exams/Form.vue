@@ -1,41 +1,37 @@
 <template>
   <div class="form">
-    <div class="data">
-      <div class="items-radio">
-        <el-radio v-model="radio" label="1"
-          >[1] Pós operatório: Miopia/RK</el-radio
+      <div>
+        <div class="info">
+          <p>TKC: {{ data.tkc }} | BAD-D: {{ data.badd }} | ISV: {{ data.isv }}</p>
+        </div>
+        <div class="items-radio">
+          <el-radio v-model="radio" label="1"
+            >[1] Pós operatório: Miopia/RK</el-radio
+          >
+          <el-radio v-model="radio" label="2"
+            >[2] Pós operatório: Hipermetropia</el-radio
+          >
+          <el-radio v-model="radio" label="3"
+            >[3] Pós operatório: Transp Córnea</el-radio
+          >
+          <el-radio v-model="radio" label="4"
+            >[4] Deformação corneana por lente de contato</el-radio
+          >
+          <el-radio v-model="radio" label="5">[5] Ceratocone 1</el-radio>
+          <el-radio v-model="radio" label="6">[6] Ceratocone 2</el-radio>
+          <el-radio v-model="radio" label="7">[7] Ceratocone 3</el-radio>
+          <el-radio v-model="radio" label="8">[8] Normal</el-radio>
+          <el-radio v-model="radio" label="9">[9] Pelúcida</el-radio>
+          <el-radio v-model="radio" label="0">[0] Outros</el-radio>
+        </div>
+      <div class="submit">
+        <el-button
+          type="primary"
+          :disabled="Object.keys(data).length === 0"
+          @click="$emit('nextExam', radio)"
+          >Próximo</el-button
         >
-        <el-radio v-model="radio" label="2"
-          >[2] Pós operatório: Hipermetropia</el-radio
-        >
-        <el-radio v-model="radio" label="3"
-          >[3] Pós operatório: Transp Córnea</el-radio
-        >
-        <el-radio v-model="radio" label="4"
-          >[4] Deformação corneana por lente de contato</el-radio
-        >
-        <el-radio v-model="radio" label="5">[5] Ceratocone 1</el-radio>
-        <el-radio v-model="radio" label="6">[6] Ceratocone 2</el-radio>
-        <el-radio v-model="radio" label="7">[7] Ceratocone 3</el-radio>
-        <el-radio v-model="radio" label="8">[8] Normal</el-radio>
-        <el-radio v-model="radio" label="9">[9] Pelúcida</el-radio>
-        <el-radio v-model="radio" label="0">[0] Outros</el-radio>
       </div>
-    </div>
-    <div class="data">
-      <p>Informações paciente:</p>
-      <p>Idade: {{ data.age }}</p>
-      <p>TKC: {{ data.tkc }}</p>
-      <p>BAD-D: {{ data.badd }}</p>
-      <p>ISV: {{ data.isv }}</p>
-    </div>
-    <div class="submit">
-      <el-button
-        type="primary"
-        :disabled="Object.keys(data).length === 0"
-        @click="$emit('nextExam', radio)"
-        >Próximo</el-button
-      >
     </div>
   </div>
 </template>
@@ -93,6 +89,7 @@ export default {
 }
 .items-radio {
   display: grid;
+  padding: 10px;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   text-align: initial;
   grid-row-gap: 30px;
@@ -100,22 +97,22 @@ export default {
 .form {
   margin: 5px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   box-sizing: border-box;
   background-color: #eee;
-  height: 90%;
+  height: 95%;
   width: 200%;
 }
 .submit {
   display: grid;
   flex: 1;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
 }
-.data {
-  padding-left: 5px;
+.info {
+  padding: 10px;
   font-family: "Quicksand";
   font-weight: normal;
-  text-align: inherit;
+  text-align: left;
 }
 </style>
